@@ -99,6 +99,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 📞 Contact
 
-For any queries or issues, feel free to reach out:
+For any queries or issues, feel free to reach out
 
 * GitHub: [madhurgarg01](https://github.com/madhurgarg01)
