@@ -1,0 +1,305 @@
+/* === Global and Root Styles === */
+body {
+  font-family: sans-serif; /* From your style.css */
+  margin: 0;
+  background-color: #f4f7f9; /* From your style.css */
+  color: #333; /* From your style.css */
+  display: flex; /* From your style.css - to center #root */
+  justify-content: center; /* From your style.css - to center #root */
+  align-items: center; /* From your style.css - to center #root */
+  min-height: 100vh; /* From your style.css */
+}
+
+#root {
+/* max-width: 1280px; */ /* You can keep this or let .app-container control max-width */
+/* margin: 0 auto; */   /* Body's flex properties will center #root */
+/* padding: 2rem; */    /* Optional: if you want padding around your app-container */
+/* text-align: center; */ /* The app-container will handle its own text alignment */
+width: 100%; /* Allow #root to expand, app-container will define content width */
+height: 100%; /* Allow #root to expand, app-container will define content height */
+display: flex; /* To also center app-container if needed, or just let it flow */
+justify-content: center;
+align-items: center;
+}
+
+/* === Documentation App Specific Styles (from your style.css) === */
+.app-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh; /* Or consider height: 100% if #root has padding and you want it to fill */
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left; /* Override potential inherited text-align: center from #root */
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #eef1f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+  font-size: 1em;
+  margin: 0;
+  color: #555;
+}
+
+/*
+ NOTE: In React, you'd typically use className for the button
+ and select it like `.add-top-level-category-btn`
+ But if your JSX uses id="addTopLevelCategoryBtn", this ID selector is fine.
+*/
+#addTopLevelCategoryBtn,
+.sidebar-header button { /* Making it more generic if you switch to class */
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+#addTopLevelCategoryBtn:hover,
+.sidebar-header button:hover {
+  background: #0056b3;
+}
+
+
+.category-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.category-tree li {
+  padding: 8px 5px; /* Be mindful of padding-left for indentation which is set inline in JSX */
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-tree li:hover {
+  background-color: #dde4eb;
+}
+
+.category-tree li.active {
+  background-color: #007bff;
+  color: white;
+}
+.category-tree li.active .options-btn {
+  color: white;
+}
+
+
+.category-tree .item-name {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex; /* To align icon and text nicely */
+  align-items: center;
+}
+
+
+.category-tree ul { /* Sub-category list (these are rendered inside parent li in the React version) */
+  list-style: none;
+  /* padding-left is handled dynamically for indentation in CategoryItem.js */
+  margin-top: 5px;
+}
+
+.options-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 2px 5px;
+  color: #555;
+  margin-left: auto; /* Pushes button to the right within the flex li */
+}
+.options-btn:hover {
+  color: #000;
+}
+
+.quick-tips {
+  margin-top: auto; /* Pushes to bottom */
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 0.9em;
+  color: #666;
+}
+.quick-tips h4 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+.quick-tips ul {
+  padding-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+.content-pane {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.content-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+/*
+ NOTE: In React, you'd typically use className for these elements
+ and select them like `.document-last-updated`, `.edit-document-btn`
+ But if your JSX uses these IDs, the ID selectors are fine.
+*/
+#documentLastUpdated {
+  font-size: 0.8em;
+  color: #777;
+  margin-left: auto; /* Pushes it away from title if needed */
+  padding-left: 1em; /* Space from title */
+}
+#editDocumentBtn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1em; /* Space from last updated or title */
+}
+#editDocumentBtn:hover {
+  background-color: #e68a00;
+}
+
+.document-body h1, /* Ensure consistent styling for h1 if used in content */
+.document-body h2,
+.document-body h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.document-body p {
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+#documentEditor textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-family: monospace; /* Or inherit from body */
+  font-size: 1em; /* Ensure readable font size */
+}
+#documentEditor button {
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  margin-right: 10px;
+}
+#saveDocumentBtn {
+  background-color: #4CAF50;
+  color: white;
+}
+#cancelEditBtn {
+  background-color: #f44336;
+  color: white;
+}
+
+
+/* Context Menu */
+.context-menu {
+  position: absolute; /* This is fine, React will set top/left */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  padding: 5px 0;
+  z-index: 1000;
+  min-width: 150px;
+  /* display: none; is not strictly needed as React will conditionally render it,
+     but it doesn't hurt as a fallback or initial style before React mounts. */
+}
+
+.context-menu-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+.context-menu-item.delete {
+  color: red;
+}
+
+/* === Default Vite/React Logo and Card Styles (Removed or Commented Out) === */
+/*
+.logo {
+height: 6em;
+padding: 1.5em;
+will-change: filter;
+transition: filter 300ms;
+}
+.logo:hover {
+filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+a:nth-of-type(2) .logo {
+  animation: logo-spin infinite 20s linear;
+}
+}
+
+.card {
+padding: 2em;
+}
+
+.read-the-docs {
+color: #888;
+}
+*/

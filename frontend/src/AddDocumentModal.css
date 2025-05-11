@@ -1,0 +1,80 @@
+/* src/AddDocumentModal.css */
+/* Uses .modal-overlay, .modal-content, .modal-actions from EditModal.css if imported globally or in App.css */
+/* Or, copy those styles here if AddDocumentModal.css is imported only in AddDocumentModal.jsx */
+
+/* If not reusing styles, copy from EditModal.css and paste here */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1050; /* Higher than context menu */
+}
+
+.modal-content.add-doc-modal { /* Specific class for this modal */
+    background-color: white; padding: 25px; border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    min-width: 550px; max-width: 80%;
+    display: flex; flex-direction: column;
+}
+
+.modal-content.add-doc-modal h2 {
+    margin-top: 0; margin-bottom: 20px; font-size: 1.5em; color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group label.radio-label {
+    font-weight: normal;
+    display: block; /* Each radio on new line */
+    margin-bottom: 8px;
+}
+.form-group label.radio-label input[type="radio"] {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.modal-actions {
+    display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;
+}
+
+.modal-actions button {
+    padding: 10px 20px; border-radius: 4px; cursor: pointer;
+    border: none; font-weight: bold;
+}
+.modal-actions .save-btn { background-color: #4CAF50; color: white; }
+.modal-actions .save-btn:hover { background-color: #45a049; }
+.modal-actions .cancel-btn { background-color: #777; color: white; } /* Different cancel color */
+.modal-actions .cancel-btn:hover { background-color: #666; }
